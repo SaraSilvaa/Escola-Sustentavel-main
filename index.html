@@ -64,35 +64,39 @@
                     <div class="col-lg-8 align-self-baseline">
                         <p class="text-white-75 mb-5">No ambiente urbano agitado, nossa horta comunitária é um oásis de natureza e cooperação.
                             No coração da vizinhança, vai além de plantas, promovendo união, educação ambiental e autossuficiência.</p>
-                        <a class="btn btn-light btn-xl" href="#about">Saiba mais</a>
+                        <a class="btn btn-light btn-xl" href="#relatorios">Saiba mais</a>
                     </div>
                 </div>
             </div>
         </header>
         <!-- About-->
-        <!-- <section class="bg-primary about" id="about">
-            <div class="container py-5">
-                <div class="row justify-content-center align-items-center">
-                    <div class="col-lg-8 text-center">
-                        <h2 class="text-white display-4">Acesso a Informação</h2>
-                        <p class="lead text-white">Oferecemos relatórios abrangentes para garantir o sucesso do seu plantio em nossas hortas. Nossos relatórios são elaborados levando em consideração a época de colheita ideal e as necessidades específicas de cada planta, garantindo um crescimento saudável e correto.</p>
+        <section class=" bg-success bg-gradient  about" id="relatorios">
+            
+            <div class="container px-2 px-lg-5">
+                <div class="row   justify-content-center">
+                    <div class="col-lg-8 text-center"><p></p>
+                        <h2 class="text-white mt-0">Acesso a Informação</h2>
+                        <p class="text-white">Oferecemos relatórios abrangentes para garantir o sucesso do seu plantio em nossas hortas.
+                            Nossos relatórios são elaborados levando em consideração a época de colheita ideal e as necessidades específicas de cada planta, garantindo um crescimento saudável e correto
+                        </p>
                     </div>
                 </div>
-        
-                <div class="row mt-5">
+
+               
+                <div class="row mt-4">
                     <div class="col-md-6">
-                        <div class="card overlapped-card shadow">
-                            <img src="assets/img/Dashboard.png" alt="Imagem 1" class="card-img-top">
+                        <div class="card overlapped-card">
                             <div class="card-body">
+                                <img src="assets/img/Dashboard.png" alt="Imagem 1" class="card-img-top"><p>
                                 <h5 class="card-title">Informações de Plantío</h5>
-                                <p class="card-text">Dashboard completo com informações que irão facilitar o seu plantío.</p>
+                                <p class="card-text">Dashboard completo com informações que irão facilitar o seu plantío</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="card overlapped-card shadow">
-                            <img src="assets/img/Dashboard.png" alt="Imagem 2" class="card-img-top">
+                        <div class="card overlapped-card">
                             <div class="card-body">
+                                <img src="assets/img/Dashboard.png" alt="Imagem 2" class="card-img-top"><p>
                                 <h5 class="card-title">Card 2</h5>
                                 <p class="card-text">Descrição do Card 2.</p>
                             </div>
@@ -100,7 +104,8 @@
                     </div>
                 </div>
             </div>
-        </section> -->
+        </section>
+        
        
          <!-- Portfolio-->
          <div id="portfolio">
@@ -115,7 +120,6 @@
                             <img class="img-fluid" src="assets/img/portfolio/thumbnails/1a.jpeg" alt="..." />
                             <div class="portfolio-box-caption">
                                 <div class="project-category text-white-50"><img src="assets/lupa (2).png" alt=""></div>
-                                <!-- <div class="project-name">Project Name</div> -->
                             </div>
                         </a>
                     </div>
@@ -124,7 +128,6 @@
                             <img class="img-fluid" src="assets/img/portfolio/thumbnails/2a.jpg" alt="..." />
                             <div class="portfolio-box-caption">
                                 <div class="project-category text-white-50"><img src="assets/lupa (2).png" alt=""></div>
-                                <!-- <div class="project-name">Project Name</div> -->
                             </div>
                         </a>
                     </div>
@@ -133,7 +136,6 @@
                             <img class="img-fluid" src="assets/img/portfolio/thumbnails/3a.jpg" alt="..." />
                             <div class="portfolio-box-caption">
                                 <div class="project-category text-white-50"><img src="assets/lupa (2).png" alt=""></div>
-                                <!-- <div class="project-name">Project Name</div> -->
                             </div>
                         </a>
                     </div>
@@ -142,7 +144,6 @@
                             <img class="img-fluid" src="assets/img/portfolio/thumbnails/4a.jpg" alt="..." />
                             <div class="portfolio-box-caption">
                                 <div class="project-category text-white-50"><img src="assets/lupa (2).png" alt=""></div>
-                                <!-- <div class="project-name">Project Name</div> -->
                             </div>
                         </a>
                     </div>
@@ -151,7 +152,6 @@
                             <img class="img-fluid" src="assets/img/portfolio/thumbnails/5a.jpg" alt="..." />
                             <div class="portfolio-box-caption">
                                 <div class="project-category text-white-50"><img src="assets/lupa (2).png" alt=""></div>
-                                <!-- <div class="project-name">Project Name</div> -->
                             </div>
                         </a>
                     </div>
@@ -160,7 +160,6 @@
                             <img class="img-fluid" src="assets/img/portfolio/thumbnails/6a.jpg" alt="..." />
                             <div class="portfolio-box-caption p-3">
                                 <div class="project-category text-white-50"><img src="assets/lupa (2).png" alt=""></div>
-                                <!-- <div class="project-name">Project Name</div> -->
                             </div>
                         </a>
                     </div>
@@ -229,6 +228,22 @@
         <script src="js/scripts.js"></script>
        
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-        
+        <script>
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            navLinks.forEach((link) => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    if (targetSection) {
+                        window.scrollTo({
+                            top: targetSection.offsetTop,
+                            behavior: 'smooth',
+                        });
+                    }
+                });
+            });
+        </script>
     </body>
 </html>

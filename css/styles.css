@@ -74,6 +74,34 @@
 *::after {
   box-sizing: border-box;
 }
+/* Estilo para a seção "Acesso a Informação" */
+.about {
+  background-color: #007BFF;
+  padding: 80px 0;
+}
+
+/* Estilize o card */
+.card.overlapped-card {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+/* Estilo para a imagem que será sobreposta */
+.card.overlapped-card img {
+  width: 100%;
+  height: auto;
+  transition: opacity 0.3s;
+}
+
+/* Efeito de sobreposição ao passar o mouse */
+.card.overlapped-card:hover {
+  transform: scale(1.05);
+}
+
+.card.overlapped-card:hover img {
+  opacity: 0.7;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   :root {
