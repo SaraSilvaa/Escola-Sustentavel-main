@@ -29,15 +29,13 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto my-2 my-lg-0">
                         <li class="nav-item"><a class="nav-link" href="#page-top">Home</a></li>
-                        <!-- <li class="nav-item"><a class="nav-link" href="#about">Acesso a Informação</a></li> -->
                         <li class="nav-item"><a class="nav-link" href="#portfolio">Galeria</a></li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown"  id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Relatórios
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <!-- Adicione os itens do menu suspenso aqui -->
-                                <a class="dropdown-item" href="#power-bi" data-report-type="power-bi">Power Bi</a>
+                                <a class="dropdown-item" href="#power-bi" data-report-type="power-bi">Relatório de Plantío</a>
                                 <a class="dropdown-item" href="#app" data-report-type="app">APP</a>
                                 
                                 
@@ -202,24 +200,28 @@
                 const reportTypeLabel = document.getElementById('reportTypeLabel');
         
                 reportLinks.forEach((link) => {
-                    link.addEventListener('click', (e) => {
+                    link.addEventListener(isTouchDevice() ? 'touchend' : 'click', (e) => {
                         e.preventDefault();
                         const reportType = link.getAttribute('data-report-type');
         
                         if (reportType === 'power-bi') {
                             document.getElementById('reportIframeModal').src = "https://app.powerbi.com/view?r=eyJrIjoiNzA2MjVlNzgtNzUzYy00MDgyLWExMmMtNGQyNjVkZjg5MGMxIiwidCI6IjkyYjc0ODc1LThiZDQtNGMzOC05N2E4LTZlNzQ3ZTNhNmMyYyJ9";
-                            reportTypeLabel.textContent = 'Power BI';
+                            reportTypeLabel.textContent = 'Relatório de Plantío';
                         } else if (reportType === 'app') {
-                            // Adicione o código para carregar o conteúdo do app aqui
-                            // Exemplo: document.getElementById('reportIframeModal').src = "URL_DO_APP";
+                             document.getElementById('reportIframeModal').src = "URL_DO_APP";
                             reportTypeLabel.textContent = 'APP';
                         }
         
                         reportModal.show();
                     });
                 });
+        
+                function isTouchDevice() {
+                    return 'ontouchstart' in window || navigator.maxTouchPoints;
+                }
             });
         </script>
+        
         
         
         
@@ -245,7 +247,7 @@
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="reportModalLabel">Relatório: <span id="reportTypeLabel"></span></h5>
+                        <h5 class="modal-title" id="reportModalLabel"><span id="reportTypeLabel"></span></h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
