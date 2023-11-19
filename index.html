@@ -29,7 +29,7 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto my-2 my-lg-0">
                         <li class="nav-item"><a class="nav-link" href="#page-top">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#about">Acesso a Informação</a></li>
+                        <!-- <li class="nav-item"><a class="nav-link" href="#about">Acesso a Informação</a></li> -->
                         <li class="nav-item"><a class="nav-link" href="#portfolio">Galeria</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -37,8 +37,10 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <!-- Adicione os itens do menu suspenso aqui -->
-                                <a class="dropdown-item" href="#">Power Bi</a>
-                                <a class="dropdown-item" href="#">APP</a>
+                                <a class="dropdown-item" href="#power-bi" data-report-type="power-bi">Power Bi</a>
+                                <a class="dropdown-item" href="#app" data-report-type="app">APP</a>
+                                
+                                
                             </div>
                         </li>
                         <li class="nav-item"><a class="nav-link" href="#contact">Fale Conosco</a></li>
@@ -64,48 +66,13 @@
                     <div class="col-lg-8 align-self-baseline">
                         <p class="text-white-75 mb-5">No ambiente urbano agitado, nossa horta comunitária é um oásis de natureza e cooperação.
                             No coração da vizinhança, vai além de plantas, promovendo união, educação ambiental e autossuficiência.</p>
-                        <a class="btn btn-light btn-xl" href="#relatorios">Saiba mais</a>
+                        <a class="btn btn-light btn-xl" href="#portfolio">Saiba mais</a>
                     </div>
                 </div>
             </div>
         </header>
-        <!-- About-->
-        <section class=" bg-success bg-gradient  about" id="relatorios">
-            
-            <div class="container px-2 px-lg-5">
-                <div class="row   justify-content-center">
-                    <div class="col-lg-8 text-center"><p></p>
-                        <h2 class="text-white mt-0">Acesso a Informação</h2>
-                        <p class="text-white">Oferecemos relatórios abrangentes para garantir o sucesso do seu plantio em nossas hortas.
-                            Nossos relatórios são elaborados levando em consideração a época de colheita ideal e as necessidades específicas de cada planta, garantindo um crescimento saudável e correto
-                        </p>
-                    </div>
-                </div>
-
-               
-                <div class="row mt-4">
-                    <div class="col-md-6">
-                        <div class="card overlapped-card">
-                            <div class="card-body">
-                                <img src="assets/img/Dashboard.png" alt="Imagem 1" class="card-img-top"><p>
-                                <h5 class="card-title">Informações de Plantío</h5>
-                                <p class="card-text">Dashboard completo com informações que irão facilitar o seu plantío</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card overlapped-card">
-                            <div class="card-body">
-                                <img src="assets/img/Dashboard.png" alt="Imagem 2" class="card-img-top"><p>
-                                <h5 class="card-title">Card 2</h5>
-                                <p class="card-text">Descrição do Card 2.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
+       
+         
        
          <!-- Portfolio-->
          <div id="portfolio">
@@ -229,6 +196,34 @@
        
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
         <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const reportLinks = document.querySelectorAll('.dropdown-item');
+                const reportModal = new bootstrap.Modal(document.getElementById('reportModal'));
+                const reportTypeLabel = document.getElementById('reportTypeLabel');
+        
+                reportLinks.forEach((link) => {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const reportType = link.getAttribute('data-report-type');
+        
+                        if (reportType === 'power-bi') {
+                            document.getElementById('reportIframeModal').src = "https://app.powerbi.com/view?r=eyJrIjoiNzA2MjVlNzgtNzUzYy00MDgyLWExMmMtNGQyNjVkZjg5MGMxIiwidCI6IjkyYjc0ODc1LThiZDQtNGMzOC05N2E4LTZlNzQ3ZTNhNmMyYyJ9";
+                            reportTypeLabel.textContent = 'Power BI';
+                        } else if (reportType === 'app') {
+                            // Adicione o código para carregar o conteúdo do app aqui
+                            // Exemplo: document.getElementById('reportIframeModal').src = "URL_DO_APP";
+                            reportTypeLabel.textContent = 'APP';
+                        }
+        
+                        reportModal.show();
+                    });
+                });
+            });
+        </script>
+        
+        
+        
+        <script>
             const navLinks = document.querySelectorAll('.nav-link');
 
             navLinks.forEach((link) => {
@@ -245,5 +240,19 @@
                 });
             });
         </script>
+        <!-- Modal -->
+        <div class="modal fade" id="reportModal" tabindex="-1" aria-labelledby="reportModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="reportModalLabel">Relatório: <span id="reportTypeLabel"></span></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <iframe id="reportIframeModal" title="Report Section" frameborder="0" allowFullScreen="true" style="height: 70vh; width: 100%;"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
